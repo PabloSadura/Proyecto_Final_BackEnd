@@ -2,7 +2,6 @@ import { Router } from "express";
 import passport from "passport";
 
 const registerRouter = Router();
-const username = "";
 registerRouter.get("/", (req, res) => {
   res.render("login");
 });

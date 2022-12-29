@@ -7,4 +7,6 @@ export const config = {
   MONGO_URL: process.env.MONGO_URL,
   PORT: process.env.PORT || 8081,
   MODO: process.argv[3] || process.env.MODO,
+  EMAIL: process.env.EMAIL,
+  PASSWORD: process.env.PASSWORD,
 };

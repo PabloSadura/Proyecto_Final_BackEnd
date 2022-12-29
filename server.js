@@ -16,6 +16,7 @@ import "./passport/googlePassport.js";
 import infoRouter from "./routes/info.js";
 import randomRouter from "./routes/randomsRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import emailRouter from "./routes/emailRoutes.js";
 const app = express();
 
 app.use(express.json());
@@ -46,6 +47,7 @@ app.use("/api/randoms", randomRouter);
 app.use("/newUser", userRoutes);
 app.use("/auth-bloq", userRoutes);
 app.use("/auth-nobloq", userRoutes);
+app.use("/email", emailRouter);
 
 // Motores de Plantilla
 
