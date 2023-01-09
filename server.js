@@ -36,6 +36,9 @@ app.use(
     rolling: true,
   })
 );
+// Inicializar passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Rutas
 app.use("/productos", productRoutes);
@@ -53,10 +56,6 @@ app.use("/email", emailRouter);
 
 app.set("views", "./views");
 app.set("view engine", "ejs");
-
-// Inicializar passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Logger con log4js
 
@@ -77,6 +76,7 @@ log4js.configure({
 const loggerInfo = log4js.getLogger();
 const loggerError = log4js.getLogger("error");
 const loggerWarm = log4js.getLogger("archivo");
+
 const PORT = config.PORT;
 
 // Servidor
