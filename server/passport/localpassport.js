@@ -1,7 +1,7 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import { Email } from "../persistencia/contenedores/emailClass.js";
-const emailRegistro = new Email();
+// import { Email } from "../persistencia/contenedores/emailClass.js";
+// const emailRegistro = new Email();
 passport.use(
   "registro",
   new LocalStrategy(
@@ -20,7 +20,7 @@ passport.use(
         (usuario.username = username),
           (usuario.password = password),
           (usuario.email = email);
-        emailRegistro.setEmail(username, email);
+        // emailRegistro.setEmail(username, email);
         loggerInfo.info();
         usuario.save();
         done(null, usuario);
