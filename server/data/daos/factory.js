@@ -8,7 +8,7 @@ const variableEntorno = config.TIPO_PERSISTENCIA;
 
 switch (variableEntorno) {
   case "FILE":
-    dao = new ProductsFile();
+    dao = new ProductsFile("products.txt");
     break;
   case "MEM":
     dao = new ProductosMem();

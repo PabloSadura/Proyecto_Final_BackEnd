@@ -2,15 +2,23 @@ import fs from "fs";
 
 export default class ProductsFile {
   constructor() {
-    this.path = path;
+    this.products = [];
   }
-
   async getAll() {
-    return "";
+    if (fs.existsSync("products.txt")) {
+      const data = await fs.readFileSync("products.txt", "utf-8");
+      const products = JSON.parse(data);
+      return products;
+    }
+    return false;
   }
 
-  async create(product) {
-    return "";
+  async create(obj) {
+    const id = await this.#addId();
+    const newProduct = { id, ...obj };
+    this.products.push(newProduct);
+    await fs.writeFileSync("products.txt", JSON.stringify(this.products));
+    return newProduct;
   }
 
   async getById(productId) {
@@ -33,9 +41,9 @@ export default class ProductsFile {
 
   #addId = () => {
     let id =
-      this.product.length === 0
+      this.products.length === 0
         ? 1
-        : this.product[this.product.length - 1].id + 1;
+        : this.products[this.products.length - 1].id + 1;
     return id;
   };
 }
