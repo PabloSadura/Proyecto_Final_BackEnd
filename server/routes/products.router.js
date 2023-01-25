@@ -10,7 +10,8 @@ export default class ProductsRouter {
   init() {
     productRouter.get("/", this.productsController.getAllProducts);
     productRouter.post("/", this.productsController.setOneProduct);
-    // productRouter.delete("/:id", this.productsController.deleteOneProduct);
+    productRouter.get("/:id", this.productsController.getById);
+    productRouter.delete("/:id", this.productsController.deleteOneProduct);
     // productRouter.put("/:id", this.productsController.updateOne);
     return productRouter;
   }

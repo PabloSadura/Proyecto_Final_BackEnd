@@ -1,1 +1,1 @@
-[{"id":1,"nombre":"Perro","peso":1000,"precio":1500},{"id":2,"nombre":"Gato","peso":1000,"precio":1500}]
+[{"id":2,"nombre":"Gato","peso":1000,"precio":1500},{"id":3,"nombre":"Paloma","peso":1000,"precio":1500}]

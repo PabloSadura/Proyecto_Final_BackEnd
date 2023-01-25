@@ -1,32 +1,40 @@
 import fs from "fs";
 
 export default class ProductsFile {
-  constructor() {
-    this.products = [];
+  constructor(path) {
+    this.path = path;
   }
+
   async getAll() {
-    if (fs.existsSync("products.txt")) {
-      const data = await fs.readFileSync("products.txt", "utf-8");
+    if (fs.existsSync(this.path)) {
+      const data = await fs.readFileSync(this.path, "utf-8");
       const products = JSON.parse(data);
       return products;
     }
-    return false;
+    return [];
   }
 
   async create(obj) {
-    const id = await this.#addId();
+    const products = await this.getAll();
+    const id = await this.#addId(products);
     const newProduct = { id, ...obj };
-    this.products.push(newProduct);
-    await fs.writeFileSync("products.txt", JSON.stringify(this.products));
+    products.push(newProduct);
+    await fs.writeFileSync(this.path, JSON.stringify(products));
     return newProduct;
   }
 
   async getById(productId) {
-    return "";
+    const products = await this.getAll();
+    const index = this.#getIndex(products, productId);
+    return products[index];
   }
 
   async deleteById(productId) {
-    return "";
+    const products = await this.getAll();
+    const index = this.#getIndex(products, productId);
+    products.splice(index, 1);
+    await fs.writeFileSync(this.path, JSON.stringify(products));
+    return true;
   }
   async deleteAll() {
     return "";
@@ -35,15 +43,12 @@ export default class ProductsFile {
     return "";
   }
 
-  #getIndex = (id) => {
-    return this.product.findIndex((el) => el.id === id);
+  #getIndex = (array, id) => {
+    return array.findIndex((el) => el.id === id);
   };
 
-  #addId = () => {
-    let id =
-      this.products.length === 0
-        ? 1
-        : this.products[this.products.length - 1].id + 1;
+  #addId = async (array) => {
+    let id = array.length === 0 ? 1 : array[array.length - 1].id + 1;
     return id;
   };
 }

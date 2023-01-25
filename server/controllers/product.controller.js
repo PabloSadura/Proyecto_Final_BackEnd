@@ -13,6 +13,15 @@ export default class ProductsController {
     const product = await this.productsService.setOneProduct(req.body);
     res.json({ message: "Producto creado con exito", product });
   };
-  // deleteOneProduct = async (req, res) => {};
+  getById = async (req, res) => {
+    const { id } = req.params;
+    const product = await this.productsService.getById(Number(id));
+    res.json({ product });
+  };
+  deleteOneProduct = async (req, res) => {
+    const { id } = req.params;
+    const product = await this.productsService.deleteById(Number(id));
+    res.json({ message: "Se elimino correctamente", product: product });
+  };
   // updateOne = async (req, res) => {};
 }
