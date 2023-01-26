@@ -1,10 +1,11 @@
 import ProductsFile from "./productFile/productsFile.js";
 import ProductosMem from "./productMem/productsMem.js";
 import ProductMongo from "./productDB/productsBD.js";
+import { productsModel } from "../models/products.model.js";
 import config from "../../config.js";
 let dao;
 
-const variableEntorno = config.TIPO_PERSISTENCIA;
+const variableEntorno = "";
 
 switch (variableEntorno) {
   case "FILE":
@@ -14,7 +15,7 @@ switch (variableEntorno) {
     dao = new ProductosMem();
     break;
   default:
-    dao = new ProductMongo();
+    dao = new ProductMongo(productsModel);
     break;
 }
 

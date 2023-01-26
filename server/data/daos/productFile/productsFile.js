@@ -31,7 +31,7 @@ export default class ProductsFile {
 
   async deleteById(productId) {
     const products = await this.getAll();
-    const index = this.#getIndex(products, productId);
+    const index = this.#getIndex(products, Number(productId));
     products.splice(index, 1);
     await fs.writeFileSync(this.path, JSON.stringify(products));
     return true;

@@ -20,7 +20,7 @@ export default class ProductsController {
   };
   deleteOneProduct = async (req, res) => {
     const { id } = req.params;
-    const product = await this.productsService.deleteById(Number(id));
+    const product = await this.productsService.deleteById(id);
     res.json({ message: "Se elimino correctamente", product: product });
   };
   // updateOne = async (req, res) => {};

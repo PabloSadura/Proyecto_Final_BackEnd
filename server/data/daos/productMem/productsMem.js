@@ -19,7 +19,7 @@ export default class ProductosMem {
   }
 
   async deleteById(productId) {
-    const index = this.#getIndex(productId);
+    const index = this.#getIndex(Number(productId));
     this.product.splice(index, 1);
     return productId;
   }

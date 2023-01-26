@@ -18,7 +18,7 @@ export default class ProductsServices {
     return product;
   };
   deleteById = async (id) => {
-    const product = await this.dao.deleteById(Number(id));
+    const product = await this.dao.deleteById(id);
     return product;
   };
 }
