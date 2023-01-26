@@ -4,12 +4,14 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import cors from "cors";
 import ProductsRouter from "./routes/products.router.js";
+import UserRouter from "./routes/user.router.js";
 import "./data/DBConfig.js";
 
 // inicializando passport
-// import passport from "passport";
-// import "./passport/localpassport.js";
+import passport from "passport";
+import "./passport/localpassport.js";
 
+const userRouter = new UserRouter();
 const productsRouter = new ProductsRouter();
 const app = express();
 
@@ -29,12 +31,12 @@ app.use(
   })
 );
 // Passport
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // routes
 
-// app.use("/", loginRoute);
+app.use("/", userRouter.init());
 app.use("/products", productsRouter.init());
 
 // Servidor

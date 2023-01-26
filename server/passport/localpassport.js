@@ -1,5 +1,6 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
+import Usuarios from "../data/models/users.model.js";
 // import { Email } from "../persistencia/contenedores/emailClass.js";
 // const emailRegistro = new Email();
 passport.use(

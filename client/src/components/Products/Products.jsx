@@ -10,7 +10,6 @@ const Products = () => {
     async function fetchData() {
       const resp = await axios.get(URL);
       const { products } = resp.data;
-      console.log(products);
       setProducts(products);
     }
     fetchData();
