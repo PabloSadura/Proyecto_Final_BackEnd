@@ -3,9 +3,13 @@ import config from "./config.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import cors from "cors";
+
+import graphqlFuntion from "./graphql/index.js";
 import ProductsRouter from "./routes/products.router.js";
 import UserRouter from "./routes/user.router.js";
-import "./data/DBConfig.js";
+import { connectDB } from "./data/DBConfig.js";
+
+connectDB();
 
 // inicializando passport
 import passport from "passport";
@@ -19,6 +23,7 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/graphql", graphqlFuntion);
 app.use(
   session({
     saveUninitialized: false,

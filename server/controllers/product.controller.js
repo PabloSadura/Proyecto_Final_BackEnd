@@ -23,5 +23,9 @@ export default class ProductsController {
     const product = await this.productsService.deleteById(id);
     res.json({ message: "Se elimino correctamente", product: product });
   };
-  // updateOne = async (req, res) => {};
+  updateOne = async (req, res) => {
+    const { id } = req.params;
+    const product = await this.productsService.updateByID(id, req.body);
+    res.json({ message: "Producto Actualizado con exito", product });
+  };
 }
