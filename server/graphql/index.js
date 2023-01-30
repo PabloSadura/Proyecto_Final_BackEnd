@@ -10,5 +10,5 @@ const graphqlSchema = makeExecutableSchema({
 
 export default graphqlHTTP({
   graphiql: true,
-  chema: graphqlSchema,
+  schema: graphqlSchema,
 });
