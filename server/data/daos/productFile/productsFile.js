@@ -37,10 +37,20 @@ export default class ProductsFile {
     return true;
   }
   async deleteAll() {
-    return "";
+    const products = [];
+    await fs.writeFileSync(this.path, JSON.stringify(products));
+    return products;
   }
   async updateByID(productId, obj) {
-    return "";
+    const products = await this.getAll();
+    const product = products.find((el) => el.id === productId);
+    if (product) {
+      (product.name = obj.name),
+        (product.price = obj.price),
+        (product.stock = obj.stock);
+      return product;
+    }
+    return 0;
   }
 
   #getIndex = (array, id) => {
