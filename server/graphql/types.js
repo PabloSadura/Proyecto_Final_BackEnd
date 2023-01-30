@@ -1,11 +1,10 @@
 export const types = `
-
 type Query{
-    getAllProducts: [Products]
-    getById: (id: Int): Product
+    getAllProducts: [Product]
+    getById (id: Int): Product
 }
 type Mutation{
-    setOneProduct(input:CreatProductInput): Product
+    setOneProduct(input:CreateProductInput): Product
     deleteOneProduct(id: Int):Product 
     updateOne(input: UpdateProductInput):Product
 }
