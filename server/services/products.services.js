@@ -1,4 +1,4 @@
-import dao from "../data/daos/factory.js";
+import dao from "../data/daos/product/factory.js";
 
 export default class ProductsServices {
   constructor() {

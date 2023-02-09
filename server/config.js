@@ -9,7 +9,7 @@ export default {
   NODE_ENV: process.env.NODE_ENV || "development",
   HOST: process.env.HOST || "localhost",
   PORT: process.env.PORT || 8080,
-  TIPO_PERSISTENCIA: process.argv[2] || "FILE",
+  TIPO_PERSISTENCIA: process.argv[2] || "",
   MONGO_URL:
     "mongodb+srv://ecommerce:coderhouse@cluster0.qrpyisw.mongodb.net/ecommerce?retryWrites=true&w=majority",
 };

@@ -6,12 +6,20 @@ export default class ProductsController {
   }
 
   getAllProducts = async (req, res) => {
-    const products = await this.productsService.getAllProducts();
-    res.json({ products });
+    try {
+      const products = await this.productsService.getAllProducts();
+      res.status(200).json({ products });
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
   };
   setOneProduct = async (req, res) => {
-    const product = await this.productsService.setOneProduct(req.body);
-    res.json({ message: "Producto creado con exito", product });
+    try {
+      const product = await this.productsService.setOneProduct(req.body);
+      res.status(200).json({ message: "Producto creado con exito" });
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
   };
   getById = async (req, res) => {
     const { id } = req.params;

@@ -1,1 +1,1 @@
-[]
+[{"id":1,"nombre":"Jirafa","peso":1000,"precio":1500}]
