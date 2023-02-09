@@ -6,6 +6,7 @@ import Register from "./components/Register/Register";
 import ErrorRegister from "./components/Register/ErrorRegister";
 import Products from "./components/Products/Products";
 import AddProducts from "./components/Products/AddProducts/AddProducts";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (

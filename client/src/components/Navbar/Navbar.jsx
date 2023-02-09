@@ -2,35 +2,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Nav, Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { useAuth0 } from "@auth0/auth0-react";
 const NavbarMenu = () => {
-  const [userApp, setUserApp] = useState("");
+  const { user, isAuthenticated, logout } = useAuth0();
 
-  const URL = "http://localhost:8080/";
-  useEffect(() => {
-    async function userLogin() {
-      const resp = await axios.get(URL);
-      const { user } = resp.data;
-      setUserApp(user);
-    }
-    userLogin();
-  }, []);
-
-  const logout = () => {
-    setUserApp("");
-  };
   return (
     <Navbar bg="light" variant="light">
       <Container>
         <Navbar.Brand href="/">Anime FanStore</Navbar.Brand>
         <Nav className="">
-          {!userApp ? (
+          {!isAuthenticated ? (
             <Link to={"/login"} className="nav-link">
               Login
             </Link>
           ) : (
             <>
-              <li className="mt-1 p-1">Bienvenido</li>
+              <li className="mt-1 p-1">Bienvenido {user.name}</li>
               <Nav.Link href="/addProducts">Agregar Productos</Nav.Link>
               <Button
                 variant="ligth"
